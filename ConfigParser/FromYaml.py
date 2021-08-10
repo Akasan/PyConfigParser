@@ -1,28 +1,22 @@
-import json
+import yaml
 from pprint import pprint
 from ._ConfigParser import ConfigParserBase
 from ._DictItem import DictItem
 
 
-class JsonConfigParser(ConfigParserBase):
-    """JsonConfigParser parses the JSON file and you can access the variable easily.
+class YamlConfigParser(ConfigParserBase):
+    """YamlConfigParser parses the YAML file and you can access the variable easily.
 
     Examples:
     ---------
-        >>> cfg = JsonConfigParser("Test.json") # you can find the Test.json in examples.
-        >>> cfg.val1
-        1
-        >>> cfg.val5.val1
-        1
-        >>> cfg.val5.val3.fuga.hoge
-        1
+        >>>
     """
 
-    def __init__(self, json_filename: str):
-        super().__init__(json_filename)
+    def __init__(self, yaml_filename: str):
+        super().__init__(yaml_filename)
 
     def load(self):
-        d = json.load(open(self.FILENAME))
+        d = yaml.safe_load(open(self.FILENAME))
         for k, v in d.items():
             if isinstance(v, dict):
                 self.__dict__[k] = DictItem(v)
@@ -49,8 +43,3 @@ class JsonConfigParser(ConfigParserBase):
                 text += f"{k} : {v}\n"
 
         return text
-
-
-if __name__ == "__main__":
-    cfg = JsonConfigParser("examples/Test.json")
-    pprint(cfg.as_dict())
