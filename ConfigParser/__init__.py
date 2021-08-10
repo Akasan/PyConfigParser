@@ -1,2 +1,2 @@
-from .FromJson import JsonConfigParser
-from .FromYaml import YamlConfigParser
+from .ConfigParser import ConfigParser
+
