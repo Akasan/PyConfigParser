@@ -46,7 +46,7 @@ class ConfigParser:
     def as_dict(self) -> dict:
         result = {}
         for k, v in self.__dict__.items():
-            if isinstance(v, DictItem):
+            if isinstance(v, (DictItem, ConfigParser)):
                 result[k] = v.as_dict()
             else:
                 result[k] = v
