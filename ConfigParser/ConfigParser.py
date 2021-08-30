@@ -32,7 +32,7 @@ class ConfigParser:
             self.FILENAME = filename
             self.EXT = _get_extension(filename)
             assert self.EXT in _available_extensions
-            self._load(self)
+            self._load()
 
     def _load(self):
         data = _data_loader[self.EXT](open(self.FILENAME, "r"))
