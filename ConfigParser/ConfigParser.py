@@ -35,7 +35,7 @@ class ConfigParser:
             self._load()
 
     def _load(self):
-        data = _data_loader[self.EXT](open(self.FILENAME, "r"))
+        data = _data_loader[self.EXT](open(self.FILENAME, "r", encoding="utf-8-sig"))
 
         for k, v in data.items():
             if isinstance(v, dict):
