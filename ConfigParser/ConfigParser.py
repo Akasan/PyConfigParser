@@ -68,4 +68,4 @@ class ConfigParser:
     def write(self, filename: Optional[str] = None):
         assert not (self.FILENAME is None and filename is None)
         filename = self.FILENAME if filename is None else filename
-        _data_saver[_get_extension(filename)](self.as_dict(), open(filename, "w"))
+        _data_saver[_get_extension(filename)](self.as_dict(), open(filename, "w", encoding="utf-8-sig"))
